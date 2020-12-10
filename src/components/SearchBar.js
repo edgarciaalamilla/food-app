@@ -2,29 +2,43 @@ import React from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-const SearchBar = () => {
+const SearchBar = ({ term, onTermChange }) => {
   return (
-    <View style={styles.searchBarStyle}>
-      <AntDesign name="search1" size={30} color="black" />
-      <TextInput placeholder="Search" style={styles.searchTextStyle} />
+    <View style={styles.backgroundStyle}>
+      <AntDesign name="search1" style={styles.iconStyle} />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Search"
+        style={styles.inputStyle}
+        value={term}
+        onChangeText={(newTerm) => onTermChange(newTerm)}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  searchBarStyle: {
-    backgroundColor: "#CCCCCC",
+  backgroundStyle: {
+    backgroundColor: "#F0EEEE",
+    height: 50,
     borderRadius: 5,
     margin: 15,
-    paddingLeft: 10,
-    height: 50,
 
     flexDirection: "row",
-    alignItems: "center",
   },
-  searchTextStyle: {
-    fontSize: 20,
-    marginLeft: 10,
+  iconStyle: {
+    fontSize: 30,
+    color: "black",
+    alignSelf: "center",
+    marginHorizontal: 15,
+  },
+  inputStyle: {
+    fontSize: 22,
+
+    // borderColor: "black",
+    // borderWidth: 5,
+    flex: 1,
   },
 });
 
