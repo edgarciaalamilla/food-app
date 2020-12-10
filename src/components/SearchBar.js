@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-const SearchBar = ({ term, onTermChange }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   return (
     <View style={styles.backgroundStyle}>
       <AntDesign name="search1" style={styles.iconStyle} />
@@ -12,7 +12,10 @@ const SearchBar = ({ term, onTermChange }) => {
         placeholder="Search"
         style={styles.inputStyle}
         value={term}
-        onChangeText={(newTerm) => onTermChange(newTerm)}
+        // onChangeText={(newTerm) => onTermChange(newTerm)}
+        // onEndEditing={() => onTermSubmit()}
+        onChangeText={onTermChange}
+        onEndEditing={onTermSubmit}
       />
     </View>
   );
